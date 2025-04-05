@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <wchar.h>
+
+
+
+int main()
+{   
+    int flag=0;
+    int field[15][15] = {{0}};
+    
+    wchar_t numbers[15] = {L'①', L'②', L'③', L'④', L'⑤', L'⑥', L'⑦',
+                           L'⑧', L'⑧', L'⑨', L'⑩', L'⑪', L'⑫', L'⑬',
+                           L'⑭', L'⑮'};
+    while (flag==0){
+        printf("Let's play Omok!\n\n");
+        while (flag==1){
+        
+        // print field
+        
+        
+        }
+    }
+    return 0;
+}
