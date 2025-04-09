@@ -1,23 +1,69 @@
 #include <stdio.h>
-#include <wchar.h>
 
 
 
 int main()
 {   
     int flag=0;
-    int field[15][15] = {{0}};
     
-    wchar_t numbers[15] = {L'①', L'②', L'③', L'④', L'⑤', L'⑥', L'⑦',
-                           L'⑧', L'⑧', L'⑨', L'⑩', L'⑪', L'⑫', L'⑬',
-                           L'⑭', L'⑮'};
+    char b_stone = 'O';
+    char w_stone = 'X';
+    
+    char field[15][15] = {};
+    
+    int turns = 0;
+    int pos_x,pos_y;
+    
+    
+    printf("Let's play Omok!\n\n");
+    printf("Black is O   /   White is X");
+    
     while (flag==0){
-        printf("Let's play Omok!\n\n");
-        while (flag==1){
         
-        // print field
+        // init field
+        for (int i=0; i<15; i++){
+            for (int j=0; j<15; j++){
+                field[i][j] = '+';
+            }
+        }
         
+        flag = 1;
         
+        while(flag==1){
+            
+            
+            // print field
+            
+            printf("\n\n      ");
+            for (int i=0; i<15; i++) printf("%d", (i+1)/10);
+            printf("\n      ");
+            for (int i=0; i<15; i++) printf("%d", (i+1)%10);
+            printf("\n\n");
+            
+            for (int y=0; y<15; y++){
+                printf("%d%d    ", (y+1)/10, (y+1)%10);
+                for (int x=0; x<15; x++){
+                    printf("%c", field[x][y]);
+                }
+                printf("\n");
+            }
+            
+            // choose position
+            flag = 2;
+            while (flag==2){
+                printf("\nWhere, %s(%c)?  (x y)\n",
+                             (turns%2==0)?"Black":"White",
+                             (turns%2==0)?b_stone:w_stone);
+                                                    
+                scanf("%d %d", &pos_x, &pos_y);
+                if (field[--pos_x][--pos_y]=='+') flag = 1;
+                else printf("\n\nOh,no there is already taken.");
+            }
+            field[pos_x][pos_y] = (turns%2==0)?b_stone:w_stone;
+            
+            
+            turns++;
+            
         }
     }
     return 0;
